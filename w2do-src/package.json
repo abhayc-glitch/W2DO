@@ -1,7 +1,8 @@
 {
-  "name": "todo-src",
+  "name": "w2do-src",
   "version": "0.1.0",
   "private": true,
+  "_id": "w2do-src@0.1.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
