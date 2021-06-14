@@ -16,10 +16,14 @@ function TodoForm({setInput, todos, setTodos, input}) {
             ...todos,
             {text: input, completed: false, id: Math.random() * 1000}
         ])
+        setInput('')
     }
     return (
         <form>
-            <input onChange = {inputHandler} type = "text" className = "todo-input"/>
+            <input value = {input}
+             onChange = {inputHandler} 
+             type = "text" 
+             className = "todo-input"/>
             <button onClick={ submitHandler } className = "todo-button" type = "submit">
                 <i className="fas fa-plus-square"></i>
             </button>
@@ -32,7 +36,7 @@ function TodoForm({setInput, todos, setTodos, input}) {
             </div>
         </form>
     );
-};
+};  
 
 export default TodoForm;
 

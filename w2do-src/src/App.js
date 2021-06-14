@@ -10,14 +10,21 @@ function App() {
   // Text of the todo, ID, completed/uncompleted
   const [todos, setTodos] = useState([])
   return (
-    <div className="todo-app">
+    <div className="App">
       <header>
         <h1>What's To Do? </h1>
       </header>
+
       {/* To take in the Todo */}
-      < TodoForm input = {input} todos={todos} setInput = {setInput} />
+      <TodoForm 
+        input = {input} 
+        todos={todos} 
+        setTodos = {setTodos} 
+        setInput = {setInput}
+      />
+      
       {/* To display the Todo */}
-      <TodoList />
+      <TodoList setTodos = {setTodos} todos={todos} />
     </div>
   );
 }
