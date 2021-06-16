@@ -4,7 +4,7 @@ import React, { useState } from 'react'
     We use setInput from App.js
     
 */}
-function TodoForm({setInput, todos, setTodos, input}) {
+function TodoForm({setInput, todos, setTodos, input,setStatus}) {
     function inputHandler(e){
         console.log(e.target.value)
         setInput(e.target.value)
@@ -18,6 +18,10 @@ function TodoForm({setInput, todos, setTodos, input}) {
         ])
         setInput('')
     }
+    function statusHandler(e){
+        setStatus(e.target.value);
+         
+    }
     return (
         <form>
             <input value = {input}
@@ -28,7 +32,7 @@ function TodoForm({setInput, todos, setTodos, input}) {
                 <i className="fas fa-plus-square"></i>
             </button>
             <div class = "select">
-                <select name = "What's 2 Do?" className = 'filter-todo'>
+                <select onChange = {statusHandler} name = "What's 2 Do?" className = 'filter-todo'>
                     <option value = "all">All</option>
                     <option value = "uncompleted">Uncompleted</option>
                     <option value = "completed">Completed</option>
