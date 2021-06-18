@@ -6,7 +6,6 @@ import React, { useState } from 'react'
 */}
 function TodoForm({setInput, todos, setTodos, input,setStatus}) {
     function inputHandler(e){
-        console.log(e.target.value)
         setInput(e.target.value)
     }
     function submitHandler(e){

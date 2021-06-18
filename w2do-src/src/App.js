@@ -13,8 +13,42 @@ function App() {
   // We have to 2 pieces of state to manage all todos and filtered todos depending on 
   // ... the toggled sectional view we are in.
   const [filtered,setFiltered] = useState([]);
+ 
+  useEffect(() => {
+    getLocalItems();
+  },[])
 
-  
+  useEffect(() => {
+    filterHandler();
+    localSave();
+  }, [todos, status])
+
+  function filterHandler(){
+      switch(status){
+        case 'completed':
+          setFiltered(todos.filter((todo) => todo.completed === true))
+          break;
+        case 'uncompleted':
+          setFiltered(todos.filter((todo) => todos.completed === false))
+          break;
+        default:
+          setFiltered(todos)
+          break;
+        }
+      }
+
+  function localSave(){
+      localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  function getLocalItems(){
+    if(localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    }else {
+       let todolocal = JSON.parse(localStorage.getItem('todos'))
+       setTodos(todolocal);
+    }
+  }
   return (
     <div className="App">
       <header>
@@ -31,7 +65,7 @@ function App() {
       />
       
       {/* To display the Todo */}
-      <TodoList setTodos = {setTodos} todos={todos} />
+      <TodoList setTodos = {setTodos} todos={todos} filtered = {filtered}  />
     </div>
   );
 }

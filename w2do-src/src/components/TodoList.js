@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Todo from './Todo'
 // This is where the "Todo" are stored.
-function TodoList({ todos, setTodos }) {
+function TodoList({ todos, setTodos, filtered}) {
     return (
         <div>
             <div className = "todo-container">
                 <ul className = "todo-list">
-                    {todos.map(todo => (
+                    {filtered.map(todo => (
                         <Todo key={todo.id}
                         text={todo.text} 
                         setTodos = {setTodos} 
